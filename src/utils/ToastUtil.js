@@ -31,10 +31,10 @@ class ToastUtil {
         this.show(TYPE_SUCCESS, title, message, true);
     }
 
-    static errorRaw(title, message, autoCloseDelay = 3000) {
+    static errorRaw(title, message, autoCloseDelay = 3001) {
         this.show(TYPE_ERROR, title, message, true, autoCloseDelay);
     }
-    static errorApi(error, title = 'common.fail-to-load-data', autoCloseDelay = 3000) {
+    static errorApi(error, title = 'common.fail-to-load-data', autoCloseDelay = 3001) {
         if (axios.isCancel(error)) {
             // Do nothing if request was cancelled
             return;
@@ -62,7 +62,7 @@ class ToastUtil {
         });
     }
 
-    static show(type, title, message, rawMessage = false, autoCloseDelay = 3000) {
+    static show(type, title, message, rawMessage = false, autoCloseDelay = 3001) {
         const content = <CustomToast titleId={title} messageId={rawMessage ? null : message} message={rawMessage ? message : null} time={new Date()} />;
         const options = {
             position: toast.POSITION.BOTTOM_RIGHT,
