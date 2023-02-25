@@ -38,7 +38,6 @@ class UserManage extends Component {
                             <th>Address</th>
                             <th>Action</th>
                         </tr>
-
                         {
                             arrUsers && arrUsers.map((item, index) => {
                                 console.log('dong cheack map', item, index)
