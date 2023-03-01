@@ -45,3 +45,41 @@
         color: rgb(255, 64, 0) !important;
     }
 }
+
+.modal-user-container {
+  .modal-content {
+    .modal-header {
+      button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 30px;
+      }
+    }
+  }
+  .modal-user-body{ 
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+      
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      width: 48%;
+
+      &.max-width-input{
+        width: 98%;
+      }
+        input {
+          border-radius: 3px;
+          height: 30px;
+          border: 1px solid gray;
+          outline: none;
+          padding: 0 10px;
+        }
+        
+    }
+  }
+}
