@@ -48,6 +48,7 @@
         "position": "Chức Danh",
         "role":"Vai Trò",
         "image":"Ảnh Đại Diện",
-        "save":"Lưu Người Dùng"
+        "save":"Lưu Người Dùng",
+        "edit":"Lưu Thay Đổi"
     }
 }

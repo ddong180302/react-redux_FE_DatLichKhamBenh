@@ -6,7 +6,18 @@ import { getAllUsers, createNewUserService, deleteUserService, editUserService }
 import ModalUser from './ModalUser';
 import { emitter } from '../../utils/emitter';
 import ModalEditUser from './ModalEditUser';
-
+/**
+ * life cycle
+ * run component:
+ * 1. componentWillMount đây là method sẽ được thực thi trước khi 1 component được render trên cả server side và client side.
+ * 2. run contructor -> init state
+ * 3.componentDidMount 
+ * 4.componentWillReceiveProps 
+ * 5.shouldComponentUpdate sẽ trả về kết quả true or false. Phương thức này sẽ xác định 1 component có được update hay không. Mặc định giá trị này là true. 
+ * 6.componentWillUpdate được gọi khi chúng ta update state của component trước khi nó render lại.
+ * 7. componentDidUpdate sau khi componentWillUpdate ở trên được gọi xong thì đến lượt thằng này được goi.
+ * 8. componentWillUnmount được gọi khi chúng ta unmout 1 component kiểu như xóa nó khỏi react.
+ */
 
 class UserManage extends Component {
     constructor(props) {
