@@ -1,8 +1,7 @@
 .doctor-detail-container {
-    margin: 0 100px;
-
     .intro-doctor {
         display: flex;
+        padding: 0 100px;
 
         .content-left {
             width        : 20%;
@@ -15,7 +14,6 @@
 
         .content-right {
             width         : 80%;
-            border        : 1px solid gray;
             display       : flex;
             flex-direction: column;
             padding-left  : 10px;
@@ -33,6 +31,27 @@
     }
 
     .detail-infor-doctor {
-        margin-top: 10px;
+        border-top   : 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding      : 20px 100px;
+        background   : #f7f3f3;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        h3 {
+            font-size: 17px;
+        }
+
+        img {
+            padding-top: 20px;
+            width      : 100%;
+        }
+    }
+
+    .comment-doctor {
+        padding: 0 100px;
+        height : 50px;
     }
 }
