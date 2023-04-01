@@ -253,6 +253,7 @@ export const saveDetailDoctor = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await saveDetailDoctorService(data)
+            console.log('kieerm tra : ', res)
             if (res && res.errCode === 0) {
                 toast.success("save detail doctor succeed!");
 
@@ -299,3 +300,42 @@ export const fetchAllScheduleTime = () => {
         }
     }
 }
+export const getRequiredDoctorInfor = () => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_START })
+            let resPrice = await getAllCodeService("PRICE")
+            let resPayment = await getAllCodeService("PAYMENT")
+            let resProvince = await getAllCodeService("PROVINCE")
+            console.log('check resPrice', resPrice)
+            console.log('check resPayment', resPayment)
+            console.log('check resProvince', resProvince)
+            if (resPrice && resPrice.errCode === 0
+                && resPayment && resPayment.errCode === 0
+                && resProvince && resProvince.errCode === 0) {
+                let data = {
+                    resPrice: resPrice.data,
+                    resPayment: resPayment.data,
+                    resProvince: resProvince.data,
+                }
+                console.log('check data', data)
+
+                dispatch(fetchRequiredDoctorInforSuccess(data))
+            } else {
+                dispatch(fetchRequiredDoctorInforFailed())
+            }
+        } catch (e) {
+            console.log('FETCH_REQUIRED_DOCTOR_INFOR_FAILED : ', e)
+            dispatch(fetchRequiredDoctorInforFailed());
+        }
+    }
+}
+
+export const fetchRequiredDoctorInforSuccess = (allRequiredData) => ({
+    type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_SUCCESS,
+    data: allRequiredData
+})
+
+export const fetchRequiredDoctorInforFailed = () => ({
+    type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAILED,
+})
