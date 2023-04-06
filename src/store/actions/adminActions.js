@@ -3,7 +3,9 @@ import {
     getAllCodeService, createNewUserService,
     editUserService, getAllUsers,
     deleteUserService, getTopDoctorHomeService,
-    getAllDoctors, saveDetailDoctorService
+    getAllDoctors, saveDetailDoctorService,
+    getExtraInforDoctorById,
+    getProfileDoctorById
 } from '../../services/userService';
 import { toast } from "react-toastify";
 
@@ -253,7 +255,6 @@ export const saveDetailDoctor = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await saveDetailDoctorService(data)
-            console.log('kieerm tra : ', res)
             if (res && res.errCode === 0) {
                 toast.success("save detail doctor succeed!");
 
@@ -287,6 +288,7 @@ export const fetchAllScheduleTime = () => {
                     type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
                     dataTime: res.data
                 })
+
             } else {
                 dispatch({
                     type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED,
@@ -300,6 +302,8 @@ export const fetchAllScheduleTime = () => {
         }
     }
 }
+
+
 export const getRequiredDoctorInfor = () => {
     return async (dispatch, getState) => {
         try {
@@ -307,9 +311,6 @@ export const getRequiredDoctorInfor = () => {
             let resPrice = await getAllCodeService("PRICE")
             let resPayment = await getAllCodeService("PAYMENT")
             let resProvince = await getAllCodeService("PROVINCE")
-            console.log('check resPrice', resPrice)
-            console.log('check resPayment', resPayment)
-            console.log('check resProvince', resProvince)
             if (resPrice && resPrice.errCode === 0
                 && resPayment && resPayment.errCode === 0
                 && resProvince && resProvince.errCode === 0) {
@@ -318,8 +319,6 @@ export const getRequiredDoctorInfor = () => {
                     resPayment: resPayment.data,
                     resProvince: resProvince.data,
                 }
-                console.log('check data', data)
-
                 dispatch(fetchRequiredDoctorInforSuccess(data))
             } else {
                 dispatch(fetchRequiredDoctorInforFailed())
@@ -338,4 +337,31 @@ export const fetchRequiredDoctorInforSuccess = (allRequiredData) => ({
 
 export const fetchRequiredDoctorInforFailed = () => ({
     type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAILED,
+})
+
+
+export const fetchExtraInforDoctorById = (doctorId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getExtraInforDoctorById(doctorId);
+            if (res && res.infor && res.infor.errCode === 0) {
+                dispatch(fetchExtraInforDoctorByIdSuccess(res.infor));
+            } else {
+                dispatch(fetchExtraInforDoctorByIdFailed());
+            }
+        } catch (e) {
+            dispatch(fetchExtraInforDoctorByIdFailed());
+            console.log(e)
+        }
+    }
+}
+
+//let res1 = await getTopDoctorHomeService(3);
+export const fetchExtraInforDoctorByIdSuccess = (data) => ({
+    type: actionTypes.FETCH_EXTRA_DOCTOR_INFOR_BY_ID_SUCCESS,
+    data: data
+})
+
+export const fetchExtraInforDoctorByIdFailed = () => ({
+    type: actionTypes.FETCH_EXTRA_DOCTOR_INFOR_BY_ID_FAILED
 })

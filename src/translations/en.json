@@ -70,6 +70,27 @@
             "no-schedule": "The doctor does not have an appointment during this time, please choose another time!",
             "choose":"Choose",
             "book-free": " and book (free)"
+        },
+        "extra-infor-doctor": {
+            "text-address": "Address of examination",
+            "price": "Examination price",
+            "detail": "See detail",
+            "payment": "The patient can pay the post in the form of:",
+            "hide-price": "Hide price list"
+        },
+        "booking-modal": {
+            "title": "Information to book a medical appointment",
+            "fullName": "Fullname",
+            "phoneNumber":"Phone Number",
+            "email":"Email",
+            "address": "Địa chỉ liên lạc",
+            "reason": "Reasons for medical examination",
+            "birthday": "Date of birth",
+            "gender": "Genders",
+            "btnConfirm": "Confirm",
+            "btnCancel":"Cancel",
+            "priceBooking": "Free booking",
+            "price":"Price: "
         }
     },
     "admin": {
@@ -78,7 +99,13 @@
             "select-doctor": "Select doctor",
             "intro":"Introduction:",
             "add": "Create infor",
-            "save": "Save infor"
+            "save": "Save infor",
+            "price": "Price",
+            "payment": "Payment",
+            "province": "Province",
+            "nameClinic": "Clinic's address",
+            "addressClinic": "Clinic's address",
+            "note" : "Note"
         }
     }
 }

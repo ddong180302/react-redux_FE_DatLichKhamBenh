@@ -22,7 +22,6 @@ class ModalEditUser extends Component {
 
 
     componentDidMount() {
-        console.log('....', this.props.currentUser)
         let user = this.props.currentUser;
         if (user && !_.isEmpty(user)) {
             this.setState({
